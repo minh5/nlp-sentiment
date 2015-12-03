@@ -1,7 +1,10 @@
 import re
+import random
 
 
 def processTweet(tweet):
+    """ Strip tweet to basic sentence """
+
     #Convert to lower case
     tweet = tweet.lower()
     #Convert www.* or https?://* to URL
@@ -16,15 +19,16 @@ def processTweet(tweet):
     tweet = tweet.strip('\'"')
     return tweet
 
+
 def replaceTwoOrMore(s):
-    #look for 2 or more repetitions of character and replace with the character itself
+    """Look for 2 or more repetitions of character and replace with the character itself"""
+
     pattern = re.compile(r"(.)\1{1,}", re.DOTALL)
     return pattern.sub(r"\1\1", s)
-#end
 
-#start getStopWordList
+
 def getStopWordList(stopWordListFileName):
-    #read the stopwords file and build a list
+    """read the stopwords file and build a list"""
     stopWords = []
     stopWords.append('AT_USER')
     stopWords.append('URL')
@@ -38,7 +42,10 @@ def getStopWordList(stopWordListFileName):
     fp.close()
     return stopWords
 
+
 def getFeatureVector(tweet):
+    """create a feature vector  for training"""
+
     featureVector = []
     #split tweet into words
     words = tweet.split()
@@ -55,3 +62,9 @@ def getFeatureVector(tweet):
         else:
             featureVector.append(w.lower())
     return featureVector
+
+
+def randomSample(x, n):
+    """return a random sample of a dataframe"""
+
+    return x.ix[random.sample(x.index, n)]
