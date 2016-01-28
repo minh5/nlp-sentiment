@@ -31,4 +31,13 @@ if __name__ == '__main__':
     stream = Stream(auth, l)
 
     #This line filter Twitter Streams to capture data by the keywords: 'python', 'javascript', 'ruby'
-    stream.filter(track=['rubio', 'marco rubio', "Rubio","Marco Rubio"])
+    stream.filter(track=['marco rubio',"Marco Rubio",
+    'donald trump','Donald Trump',
+    'ted cruz','Ted Cruz',
+    'ben carson','Ben Carson',
+    'chris christie','Chris Christie',
+    'jeb bush','Jeb Bush',
+    'john kasich','John Kasich',
+    'rand paul','Rand Paul'
+    'gopdebate','GOPDebate',
+    ])
